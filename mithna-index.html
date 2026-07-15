@@ -33,7 +33,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 54px;
             font-style: italic;
-            color: var(--text-primary); /* Changed to white */
+            color: var(--text-primary);
             margin-bottom: 8px;
         }
         .developer-name { 
@@ -47,16 +47,31 @@
         /* App Showcase */
         .project-section { margin-top: 60px; }
         .section-title { font-size: 24px; font-weight: 700; margin-bottom: 30px; }
-        .section-title span { color: var(--accent-brand); } /* Brand color for MARK */
+        .section-title span { color: var(--accent-brand); }
         
         .app-card {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 24px;
             padding: 40px;
+            overflow: hidden;
         }
 
-        .app-title { font-size: 28px; font-weight: 700; margin-bottom: 15px; }
+        /* App Header with Logo */
+        .app-header-block {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        .app-logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            object-fit: cover;
+            border: 1px solid var(--card-border);
+        }
+        .app-title { font-size: 28px; font-weight: 700; }
         .app-desc { color: var(--text-secondary); max-width: 600px; margin-bottom: 24px; }
 
         /* Embedded App Links */
@@ -70,28 +85,64 @@
         .app-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; }
         .app-links a:hover { color: var(--accent-brand); }
 
-        /* Screenshots Grid */
-        .screenshot-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+        /* Infinite Auto-Scrolling Screenshot Slider */
+        .screenshot-slider-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+        
+        /* Fade effect overlay on sides */
+        .screenshot-slider-container::before,
+        .screenshot-slider-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 40px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .screenshot-slider-container::before {
+            left: 0;
+            background: linear-gradient(to right, var(--card-bg), transparent);
+        }
+        .screenshot-slider-container::after {
+            right: 0;
+            background: linear-gradient(to left, var(--card-bg), transparent);
         }
 
-        .screenshot-placeholder {
+        .screenshot-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            animation: scroll 35s linear infinite;
+        }
+
+        /* Pause sliding when user hovers */
+        .screenshot-slider-container:hover .screenshot-track {
+            animation-play-state: paused;
+        }
+
+        .screenshot-item {
+            flex-shrink: 0;
             background: #1c1c1e;
             border-radius: 16px;
+            width: 200px;
             height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
             border: 1px solid var(--card-border);
             overflow: hidden;
         }
-        .screenshot-placeholder img {
+        .screenshot-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 10px)); }
         }
 
         /* Contact & Footer */
@@ -119,19 +170,45 @@
             <h2 class="section-title">Featured: <span>MARK</span></h2>
             
             <div class="app-card">
-                <h3 class="app-title">Attendance & Timetable Tracker</h3>
+                <!-- Brand Title block with App Icon Image -->
+                <div class="app-header-block">
+                    <img src="MARK.png" alt="MARK Logo" class="app-logo">
+                    <h3 class="app-title">Attendance & Timetable Tracker</h3>
+                </div>
+                
                 <p class="app-desc">A utility-focused academic assistant designed for college students to manage schedules, track attendance percentages, and maintain organization seamlessly.</p>
                 
                 <!-- Privacy Policy & Terms inside the app section block -->
                 <div class="app-links">
-                    <a href="https://pradeepmithna.github.io/mark-privacy.html">Privacy Policy &rarr;</a>
-                    <a href="https://pradeepmithna.github.io/mark-terms.html">Terms of Service &rarr;</a>
+                    <a href="privacy.html">Privacy Policy &rarr;</a>
+                    <a href="terms.html">Terms of Service &rarr;</a>
                 </div>
 
-                <div class="screenshot-grid">
-                    <div class="screenshot-placeholder"><img src="mark-home.png" alt="Home"></div>
-                    <div class="screenshot-placeholder"><img src="mark-timetable.png" alt="Timetable"></div>
-                    <div class="screenshot-placeholder"><img src="mark-stats.png" alt="Stats"></div>
+                <!-- Auto Scrolling Carousel Box -->
+                <div class="screenshot-slider-container">
+                    <div class="screenshot-track">
+                        <!-- Main 1 to 9 Images List -->
+                        <div class="screenshot-item"><img src="mark1.png" alt="Screenshot 1"></div>
+                        <div class="screenshot-item"><img src="mark2.png" alt="Screenshot 2"></div>
+                        <div class="screenshot-item"><img src="mark3.png" alt="Screenshot 3"></div>
+                        <div class="screenshot-item"><img src="mark4.png" alt="Screenshot 4"></div>
+                        <div class="screenshot-item"><img src="mark5.png" alt="Screenshot 5"></div>
+                        <div class="screenshot-item"><img src="mark6.png" alt="Screenshot 6"></div>
+                        <div class="screenshot-item"><img src="mark7.png" alt="Screenshot 7"></div>
+                        <div class="screenshot-item"><img src="mark8.png" alt="Screenshot 8"></div>
+                        <div class="screenshot-item"><img src="mark9.png" alt="Screenshot 9"></div>
+                        
+                        <!-- Cloned set for perfect loop transition point -->
+                        <div class="screenshot-item"><img src="mark1.png" alt="Screenshot 1"></div>
+                        <div class="screenshot-item"><img src="mark2.png" alt="Screenshot 2"></div>
+                        <div class="screenshot-item"><img src="mark3.png" alt="Screenshot 3"></div>
+                        <div class="screenshot-item"><img src="mark4.png" alt="Screenshot 4"></div>
+                        <div class="screenshot-item"><img src="mark5.png" alt="Screenshot 5"></div>
+                        <div class="screenshot-item"><img src="mark6.png" alt="Screenshot 6"></div>
+                        <div class="screenshot-item"><img src="mark7.png" alt="Screenshot 7"></div>
+                        <div class="screenshot-item"><img src="mark8.png" alt="Screenshot 8"></div>
+                        <div class="screenshot-item"><img src="mark9.png" alt="Screenshot 9"></div>
+                    </div>
                 </div>
             </div>
         </section>
