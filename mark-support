@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support | MARK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #080808;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-brand: #9437FF;
+            --card-bg: #121212;
+            --card-border: #1f1f1f;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            padding: 60px 20px;
+        }
+
+        .container { max-width: 700px; margin: 0 auto; }
+
+        h1 { font-size: 36px; margin-bottom: 20px; }
+        p { color: var(--text-secondary); margin-bottom: 20px; }
+        
+        .back-link { display: inline-block; margin-bottom: 40px; color: var(--text-secondary); text-decoration: none; }
+        .back-link:hover { color: var(--accent-brand); }
+
+        .contact-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 30px;
+            border-radius: 24px;
+        }
+
+        .email-link { 
+            display: inline-block; 
+            font-size: 20px; 
+            color: var(--text-primary); 
+            text-decoration: none; 
+            border-bottom: 2px solid var(--accent-brand);
+        }
+        .email-link:hover { color: var(--accent-brand); }
+
+        .footer { margin-top: 80px; color: #444; font-size: 12px; border-top: 1px solid var(--card-border); padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="back-link">&larr; Back to Home</a>
+        
+        <h1>Support for MARK</h1>
+        <p>Need help with the app, found a bug, or have a feature request? I'm here to help.</p>
+        
+        <div class="contact-box">
+            <p>Please send me an email, and I'll get back to you as soon as possible:</p>
+            <a href="mailto:pradeepmithna@icloud.com" class="email-link">pradeepmithna@icloud.com</a>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 Mithna. All rights reserved.
+        </div>
+    </div>
+
+</body>
+</html>
