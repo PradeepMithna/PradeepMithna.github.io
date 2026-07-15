@@ -184,7 +184,6 @@
             transition: max-height 0.4s cubic-bezier(0, 1, 0, 1), padding 0.4s ease, opacity 0.3s ease;
         }
 
-        /* Accordion Closed States (Matches Reference Screenshot) */
         .policy-card.collapsed .card-content {
             max-height: 0;
             padding-top: 0;
@@ -221,7 +220,6 @@
             font-weight: 700;
         }
 
-        /* Tags Container */
         .tags-container {
             display: flex;
             flex-wrap: wrap;
@@ -269,97 +267,6 @@
             opacity: 0.9;
         }
 
-        /* --- Dynamic Modal Structure --- */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            padding: 20px;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-window {
-            background-color: #0f0f0f;
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            width: 100%;
-            max-width: 640px;
-            max-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            transform: scale(0.95);
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .modal-overlay.active .modal-window {
-            transform: scale(1);
-        }
-
-        .modal-header {
-            padding: 24px;
-            border-bottom: 1px solid var(--card-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-title h3 {
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .modal-title h3 span {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            color: var(--accent-brand);
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-size: 24px;
-            transition: color 0.2s ease;
-        }
-
-        .close-btn:hover {
-            color: var(--text-primary);
-        }
-
-        .modal-body {
-            padding: 24px;
-            overflow-y: auto;
-            font-size: 15px;
-            color: var(--text-secondary);
-        }
-
-        .modal-body h4 {
-            color: var(--text-primary);
-            margin: 20px 0 8px 0;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .modal-body h4:first-child {
-            margin-top: 0;
-        }
-
         /* --- Footer Section --- */
         footer {
             margin-top: 60px;
@@ -391,7 +298,8 @@
             color: var(--text-secondary);
         }
 
-        .footer-right button {
+        /* Updated Footer Link Styles */
+        .footer-right a {
             background: none;
             border: none;
             color: var(--text-primary);
@@ -399,13 +307,14 @@
             font-family: inherit;
             font-size: 13px;
             cursor: pointer;
+            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 4px;
             transition: color 0.2s ease;
         }
 
-        .footer-right button:hover {
+        .footer-right a:hover {
             color: var(--accent-brand);
         }
     </style>
@@ -413,7 +322,7 @@
 <body>
 
     <div class="container">
-        
+       
         <!-- HEADER -->
         <header>
             <div class="app-brand">
@@ -544,35 +453,9 @@
                 <span>&copy; 2026 Mithna. All rights reserved.</span>
             </div>
             <div class="footer-right">
-                <button onclick="toggleModal(true)">Terms of Service &rarr;</button>
+                <a href="terms.html">Terms of Service &rarr;</a>
             </div>
         </footer>
-
-    </div>
-
-    <!-- TERMS OF SERVICE DYNAMIC MODAL BOX -->
-    <div class="modal-overlay" id="tosModal" onclick="closeModalOutside(event)">
-        <div class="modal-window">
-            <div class="modal-header">
-                <div class="modal-title">
-                    <h3>Terms of <span>Service</span></h3>
-                </div>
-                <button class="close-btn" onclick="toggleModal(false)">&times;</button>
-            </div>
-            <div class="modal-body">
-                <h4>1. Acceptance of Terms</h4>
-                <p>By downloading and utilizing MARK, you agree to comply with these straightforward usage frameworks. If any structural adjustments conflict with your preferences, you may discontinue use at any point.</p>
-                
-                <h4>2. App Usage Scope</h4>
-                <p>MARK provides academic schedule monitoring tools. The interface and local utility processes are crafted entirely for individual time management and percentage reference goals.</p>
-                
-                <h4>3. Account Responsibility</h4>
-                <p>If you choose to use our optional sign-in features, you are responsible for maintaining the basic authorization parameters associated with your selected sync setup.</p>
-                
-                <h4>4. Modifications to Service</h4>
-                <p>We reserve the right to roll out variations, enhancements, or theme iterations designed to optimize performance without notice.</p>
-            </div>
-        </div>
     </div>
 
     <!-- CODE CONTROLLER SCRIPT -->
@@ -581,25 +464,6 @@
         function toggleCard(element) {
             const card = element.parentElement;
             card.classList.toggle('collapsed');
-        }
-
-        // Modal Management
-        function toggleModal(show) {
-            const modal = document.getElementById('tosModal');
-            if (show) {
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Lock background scroll
-            } else {
-                modal.classList.remove('active');
-                document.body.style.overflow = ''; // Unlock background scroll
-            }
-        }
-
-        // Close Modal on Overlay Tap
-        function closeModalOutside(event) {
-            if (event.target.classList.contains('modal-overlay')) {
-                toggleModal(false);
-            }
         }
     </script>
 </body>
