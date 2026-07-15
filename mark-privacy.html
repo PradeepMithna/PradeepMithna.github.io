@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy & Terms - MARK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #080808;
+            --card-bg: #121212;
+            --card-border: #1f1f1f;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --accent-brand: #9437FF;
+            --accent-glow: rgba(148, 55, 255, 0.15);
+            --tag-bg: #1c1c1e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 680px;
+        }
+
+        /* --- Header Section --- */
+        header {
+            margin-bottom: 40px;
+        }
+
+        .app-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .app-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+            border-radius: 14px;
+            box-shadow: 0 0 25px var(--accent-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #000;
+            font-size: 20px;
+        }
+
+        .app-info h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .app-info h2 span {
+            color: var(--accent-brand);
+        }
+
+        .app-info p {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        .policy-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 54px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 12px;
+        }
+
+        .policy-title span {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 700;
+            color: var(--accent-brand);
+        }
+
+        .effective-date {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--card-border);
+            margin: 40px 0;
+        }
+
+        /* --- Intro Box --- */
+        .intro-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .intro-box span {
+            color: var(--accent-brand);
+            font-weight: 600;
+        }
+
+        /* --- Bento Cards / Accordion --- */
+        .policy-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card-header {
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .card-title-block {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .card-number {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .arrow-icon {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: var(--text-muted);
+            stroke-width: 2;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: rotate(0deg);
+        }
+
+        .card-content {
+            max-height: 1000px;
+            padding: 0 24px 24px 24px;
+            opacity: 1;
+            transition: max-height 0.4s cubic-bezier(0, 1, 0, 1), padding 0.4s ease, opacity 0.3s ease;
+        }
+
+        /* Accordion Closed States (Matches Reference Screenshot) */
+        .policy-card.collapsed .card-content {
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .policy-card.collapsed .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        .card-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        /* Callout Banners */
+        .info-banner {
+            background-color: #161617;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .info-banner-icon {
+            color: var(--accent-brand);
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        /* Tags Container */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .tag {
+            background-color: var(--tag-bg);
+            color: var(--text-secondary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tag::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-brand);
+            border-radius: 50%;
+        }
+
+        /* Contact Button */
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            margin-top: 8px;
+            transition: opacity 0.2s ease;
+        }
+
+        .contact-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* --- Dynamic Modal Structure --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-window {
+            background-color: #0f0f0f;
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 640px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-overlay.active .modal-window {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title h3 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .modal-title h3 span {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--accent-brand);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 24px;
+            transition: color 0.2s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .modal-body {
+            padding: 24px;
+            overflow-y: auto;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .modal-body h4 {
+            color: var(--text-primary);
+            margin: 20px 0 8px 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .modal-body h4:first-child {
+            margin-top: 0;
+        }
+
+        /* --- Footer Section --- */
+        footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            width: 100%;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-icon {
+            width: 24px;
+            height: 24px;
+            background: #1c1c1e;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+
+        .footer-right button {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-family: inherit;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-right button:hover {
+            color: var(--accent-brand);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- HEADER -->
+        <header>
+            <div class="app-brand">
+                <div class="app-icon">M</div>
+                <div class="app-info">
+                    <h2><span>MARK</span></h2>
+                    <p>Attendance & Timetable Tracker</p>
+                </div>
+            </div>
+            <h1 class="policy-title">Privacy <span>Policy</span></h1>
+            <p class="effective-date">Effective July 15, 2026</p>
+        </header>
+
+        <hr>
+
+        <!-- INTRO -->
+        <div class="intro-box">
+            <span>MARK</span> is a clean, utility-focused attendance and schedule tracker built for college students. This policy outlines exactly how your data is processed, keeping clarity and transparency at the core.
+        </div>
+
+        <!-- SECTION 1 -->
+        <div class="policy-card collapsed">
+            <div class="card-header" onclick="toggleCard(this)">
+                <div class="card-title-block">
+                    <span class="card-number">01</span>
+                    <span class="card-title">Account Creation</span>
+                </div>
+                <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+            </div>
+            <div class="card-content">
+                <p class="card-text">MARK offers an optional sign-in service to securely back up your data. While you can use the core app completely offline without entering personal details, logging in helps safeguard your records.</p>
+                <div class="info-banner">
+                    <span class="info-banner-icon">ℹ</span>
+                    <span>No mandatory profiles, no contact lists, or background social access required.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div class="policy-card collapsed">
+            <div class="card-header" onclick="toggleCard(this)">
+                <div class="card-title-block">
+                    <span class="card-number">02</span>
+                    <span class="card-title">Local Attendance Processing</span>
+                </div>
+                <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+            </div>
+            <div class="card-content">
+                <p class="card-text">Your subject logs, daily percentages, and modified slots stay securely inside your device architecture. All calculations are executed locally to protect your data privacy.</p>
+                <div class="tags-container">
+                    <div class="tag">Timetable profiles</div>
+                    <div class="tag">Subject tracking</div>
+                    <div class="tag">Custom class slots</div>
+                    <div class="tag">Percentage calculation</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3 -->
+        <div class="policy-card collapsed">
+            <div class="card-header" onclick="toggleCard(this)">
+                <div class="card-title-block">
+                    <span class="card-number">03</span>
+                    <span class="card-title">Data Storage & Backup</span>
+                </div>
+                <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+            </div>
+            <div class="card-content">
+                <p class="card-text">MARK stores configurations like theme customizations, pre-existing initial logs, and subject arrays directly on local storage. When signed in, safe cloud infrastructure synchronizes these settings securely.</p>
+                <div class="tags-container">
+                    <div class="tag">App configurations</div>
+                    <div class="tag">Initial entry counts</div>
+                    <div class="tag">Interface themes</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 4 -->
+        <div class="policy-card collapsed">
+            <div class="card-header" onclick="toggleCard(this)">
+                <div class="card-title-block">
+                    <span class="card-number">04</span>
+                    <span class="card-title">Children's Privacy</span>
+                </div>
+                <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+            </div>
+            <div class="card-content">
+                <p class="card-text">MARK is intended strictly as a general academic productivity utility. We do not knowingly target or harvest personal details from users under the age of 13.</p>
+            </div>
+        </div>
+
+        <!-- SECTION 5 -->
+        <div class="policy-card collapsed">
+            <div class="card-header" onclick="toggleCard(this)">
+                <div class="card-title-block">
+                    <span class="card-number">05</span>
+                    <span class="card-title">Data Retention</span>
+                </div>
+                <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+            </div>
+            <div class="card-content">
+                <p class="card-text">Your attendance data stays intact on your device until the app is deleted or reset. Secure cloud-backed architecture honors direct user commands to purge tracking history instantly.</p>
+            </div>
+        </div>
+
+        <!-- SECTION 6 -->
+        <div class="policy-card collapsed">
+            <div class="card-header" onclick="toggleCard(this)">
+                <div class="card-title-block">
+                    <span class="card-number">06</span>
+                    <span class="card-title">Contact Us</span>
+                </div>
+                <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+            </div>
+            <div class="card-content">
+                <p class="card-text">If you have any feedback or clarifying questions regarding this layout, feel free to reach out:</p>
+                <a href="mailto:pradeepmithna@icloud.com" class="contact-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    pradeepmithna@icloud.com
+                </a>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-left">
+                <div class="footer-icon">M</div>
+                <span>&copy; 2026 Mithna. All rights reserved.</span>
+            </div>
+            <div class="footer-right">
+                <button onclick="toggleModal(true)">Terms of Service &rarr;</button>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- TERMS OF SERVICE DYNAMIC MODAL BOX -->
+    <div class="modal-overlay" id="tosModal" onclick="closeModalOutside(event)">
+        <div class="modal-window">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h3>Terms of <span>Service</span></h3>
+                </div>
+                <button class="close-btn" onclick="toggleModal(false)">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>1. Acceptance of Terms</h4>
+                <p>By downloading and utilizing MARK, you agree to comply with these straightforward usage frameworks. If any structural adjustments conflict with your preferences, you may discontinue use at any point.</p>
+                
+                <h4>2. App Usage Scope</h4>
+                <p>MARK provides academic schedule monitoring tools. The interface and local utility processes are crafted entirely for individual time management and percentage reference goals.</p>
+                
+                <h4>3. Account Responsibility</h4>
+                <p>If you choose to use our optional sign-in features, you are responsible for maintaining the basic authorization parameters associated with your selected sync setup.</p>
+                
+                <h4>4. Modifications to Service</h4>
+                <p>We reserve the right to roll out variations, enhancements, or theme iterations designed to optimize performance without notice.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CODE CONTROLLER SCRIPT -->
+    <script>
+        // Accordion Management
+        function toggleCard(element) {
+            const card = element.parentElement;
+            card.classList.toggle('collapsed');
+        }
+
+        // Modal Management
+        function toggleModal(show) {
+            const modal = document.getElementById('tosModal');
+            if (show) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Lock background scroll
+            } else {
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // Unlock background scroll
+            }
+        }
+
+        // Close Modal on Overlay Tap
+        function closeModalOutside(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                toggleModal(false);
+            }
+        }
+    </script>
+</body>
+</html>
