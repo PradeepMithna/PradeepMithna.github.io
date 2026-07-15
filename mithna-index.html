@@ -33,7 +33,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 54px;
             font-style: italic;
-            color: var(--accent-brand);
+            color: var(--text-primary); /* Changed to white */
             margin-bottom: 8px;
         }
         .developer-name { 
@@ -41,11 +41,13 @@
             font-weight: 600; 
             letter-spacing: 1px;
             text-transform: uppercase;
+            color: var(--text-secondary);
         }
 
         /* App Showcase */
         .project-section { margin-top: 60px; }
         .section-title { font-size: 24px; font-weight: 700; margin-bottom: 30px; }
+        .section-title span { color: var(--accent-brand); } /* Brand color for MARK */
         
         .app-card {
             background-color: var(--card-bg);
@@ -55,8 +57,20 @@
         }
 
         .app-title { font-size: 28px; font-weight: 700; margin-bottom: 15px; }
-        .app-desc { color: var(--text-secondary); max-width: 600px; margin-bottom: 30px; }
+        .app-desc { color: var(--text-secondary); max-width: 600px; margin-bottom: 24px; }
 
+        /* Embedded App Links */
+        .app-links { 
+            display: flex; 
+            gap: 20px; 
+            margin-bottom: 30px; 
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 20px;
+        }
+        .app-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; }
+        .app-links a:hover { color: var(--accent-brand); }
+
+        /* Screenshots Grid */
         .screenshot-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -74,6 +88,11 @@
             border: 1px solid var(--card-border);
             overflow: hidden;
         }
+        .screenshot-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
         /* Contact & Footer */
         .footer-section { 
@@ -82,10 +101,8 @@
             padding-top: 40px;
         }
         .contact-email { font-size: 18px; color: var(--text-primary); margin-bottom: 20px; display: block; text-decoration: none; }
-        .footer-links { display: flex; gap: 20px; margin-top: 20px; }
-        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; }
-        .footer-links a:hover { color: var(--text-primary); }
-        .copyright { margin-top: 20px; color: #444; font-size: 12px; }
+        .contact-email:hover { color: var(--accent-brand); }
+        .copyright { color: #444; font-size: 12px; }
     </style>
 </head>
 <body>
@@ -94,17 +111,23 @@
         <!-- Brand / Identity -->
         <header>
             <h1 class="brand-name">Mithna</h1>
-            <p class="developer-name">Pradeep Mithna — Developer</p>
+            <p class="developer-name">Pradeep Mithna — App Developer</p>
         </header>
 
         <!-- MARK App Section -->
         <section class="project-section">
-            <h2 class="section-title">Featured: MARK</h2>
+            <h2 class="section-title">Featured: <span>MARK</span></h2>
             
             <div class="app-card">
                 <h3 class="app-title">Attendance & Timetable Tracker</h3>
                 <p class="app-desc">A utility-focused academic assistant designed for college students to manage schedules, track attendance percentages, and maintain organization seamlessly.</p>
                 
+                <!-- Privacy Policy & Terms inside the app section block -->
+                <div class="app-links">
+                    <a href="https://pradeepmithna.github.io/mark-privacy.html">Privacy Policy &rarr;</a>
+                    <a href="https://pradeepmithna.github.io/mark-terms.html">Terms of Service &rarr;</a>
+                </div>
+
                 <div class="screenshot-grid">
                     <div class="screenshot-placeholder"><img src="mark-home.png" alt="Home"></div>
                     <div class="screenshot-placeholder"><img src="mark-timetable.png" alt="Timetable"></div>
@@ -113,14 +136,9 @@
             </div>
         </section>
 
-        <!-- Contact & Legal -->
+        <!-- Contact & Footer -->
         <footer class="footer-section">
             <a href="mailto:pradeepmithna@icloud.com" class="contact-email">pradeepmithna@icloud.com</a>
-            
-            <div class="footer-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-            </div>
             
             <div class="copyright">
                 &copy; 2026 Mithna. All rights reserved.
